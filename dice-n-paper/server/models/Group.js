@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const groupSchema = new Schema({
-    name: {
+    groupName: {
         type: String,
         required: true,
         minlength: 1,
@@ -11,7 +11,22 @@ const groupSchema = new Schema({
     groupCreator: {
         type: String,
         required: true
-    }
+    },
+    game: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 300
+    },
+    members: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 const Group = model('Group', groupSchema);
+
+module.exports = Group;
