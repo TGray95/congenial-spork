@@ -29,6 +29,22 @@ const resolvers = {
         return { user };
       
     },
+    addFriend: async (parent, {userId, friendId}) => {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $addToSet: { friends: friendId },
+        }
+        );
+    },
+    removeFriend: async (parent, {userId, friendId}) => {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: { friends: friendId },
+        }
+        );
+    },
     addGroup: async (parent, { groupName, game, groupCreator, description }) => {
         const group = await Group.create({ groupName, game, groupCreator, description });
         return { group };
@@ -38,6 +54,14 @@ const resolvers = {
         { _id: groupId },
         {
           $addToSet: { members: userId },
+        }
+        );
+    },
+    removeGroupMember: async (parent, {groupId, userId}) => {
+      return Group.findOneAndUpdate(
+        { _id: groupId },
+        {
+          $pull: { members: userId },
         }
         );
     }
