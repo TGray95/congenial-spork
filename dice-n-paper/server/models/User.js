@@ -18,12 +18,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  groups: [
-    {
-        type: Schema.Types.ObjectId,
-        ref: 'Group',
-      },
-  ],
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 });
 
 const User = model('User', userSchema)
