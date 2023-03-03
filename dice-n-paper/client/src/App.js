@@ -1,35 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './components/assets/logo.svg';
+import './styles/App.css';
 import GameGroup from './components/GameGroup';
 
+import Header from './components/Header';
+import Home from './Pages/Home';
+import ActiveGroups from './Pages/ActiveGroups';
+import CreateGroup from './Pages/CreateGroup';
+import Profile from './Pages/Profile';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header/>
       </header>
-    </div>
-    <div>
-      <GameGroup
-      name="Board Game Group"
-      game="Monolopy"
-      schedule="Every Wednesday at 7pm"
-      description="We love playing Monopoly and welcome new members to join us!"
-      />
-    </div>
+
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/active-groups' element={<ActiveGroups/>}/>
+        <Route path='/create-group' element={<CreateGroup/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+      </Routes>
+
+
     </div>
   );
 }
