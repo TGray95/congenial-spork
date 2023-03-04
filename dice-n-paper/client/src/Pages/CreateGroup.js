@@ -1,5 +1,7 @@
 import React, { createElement, getElementById } from 'react';
 import { useState } from 'react';
+import { useMutation } from '@apollo/client'
+import { ADD_GROUP } from '../utils/mutations';
 import otherLogo from '../Images/other-logo.png';
 import beybladeLogo from '../Images/beyblade-logo.png';
 import catanLogo from '../Images/catan-logo.png';
@@ -11,43 +13,68 @@ function CreateGroup(){
     const[game, setGame] = useState('');
     const[gameLogo, setGameLogo]  = useState('');
     const[inPerson, setInPerson] = useState('');
+    const[groupName, setGroupName] = useState('')
+    const[groupCreator, setGroupCreator] = useState('');
+
+    const [addGroup, { error }] = useMutation(ADD_GROUP);
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+    
+        // On form submit, perform mutation and pass in form data object as arguments
+        // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
+        try {
+          const { data } = addGroup({
+            variables: { 
+                game: game,
+                groupName: groupName,
+                groupCreator: groupCreator
+             },
+          });
+          console.log(game, groupName, groupCreator)
+        //   window.location.reload();
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    
 
     //Adds game logo image to group
     function changeLogo(){
-        if(game == '--Select one--' || game == 'Other' || game == ''){
+        if(game === '--Select one--' || game === 'Other' || game === ''){
             return otherLogo;
         }
-        if(game == 'Dungeons & Dragons'){
+        if(game === 'Dungeons & Dragons'){
             return dndLogo;
         }
-        if(game == 'Magic The Gathering'){
+        if(game === 'Magic The Gathering'){
             return magicLogo;
         }
-        if(game == 'Catan'){
+        if(game === 'Catan'){
             return catanLogo;
         }
-        if(game == 'Beyblade'){
+        if(game === 'Beyblade'){
             return beybladeLogo;
         }
     }
 
     //Adds new input field for a unique game
     function OtherGame(){
-        if(game == 'Other'){
+        if(game === 'Other'){
             return (<input type='text' placeholder='Game Title'/>);
         }
     }
 
     //Add new input field for meeting location
     function OtherLoaction(){
-        if(inPerson == 'Meet in Person'){
+        if(inPerson === 'Meet in Person'){
             return (<input type='text' placeholder='Location'/>);
         }
     }
 
     //Addes new input for virtual meeting platform
     function OtherPlatform(){
-        if(inPerson == 'Online / Virtual'){
+        if(inPerson === 'Online / Virtual'){
             return (<input type='text' placeholder='Platform'/>);
         }
     }
@@ -57,7 +84,10 @@ function CreateGroup(){
             {/* Image asigned to quickly identify groups by game */}
             <img src={changeLogo()}/>
             {/* Input for group name (visible in group search) */}
-            <input type='text' name='name' placeholder='Group Name'/>
+            <input type='text' onChange={e => setGroupName(e.target.value)} name='name' placeholder='Group Name'/>
+            
+            <input type='text' onChange={e => setGroupCreator(e.target.value)} name='group author' placeholder='Your name here'/>
+
             {/* Input for number of players */}
             <input type='number' value={players} onChange={e => setPlayers(e.target.value)} placeholder=' Number of Players'/>
             {/* Input to selct game type */}
@@ -87,7 +117,7 @@ function CreateGroup(){
             {OtherPlatform()}
 
             {/* Creates groups and addes it to the database */}
-            <button>Create Group</button>
+            <button onClick={handleFormSubmit}>Create Group</button>
         </div>
     )
 }

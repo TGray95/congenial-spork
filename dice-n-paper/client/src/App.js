@@ -1,7 +1,6 @@
-import logo from './components/assets/logo.svg';
+import React from 'react';
 import './styles/App.css';
-import GameGroup from './components/GameGroup';
-
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Header from './components/Header';
 import Home from './Pages/Home';
 import ActiveGroups from './Pages/ActiveGroups';
@@ -9,8 +8,15 @@ import CreateGroup from './Pages/CreateGroup';
 import Profile from './Pages/Profile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+const client = new ApolloClient({
+  connectToDevTools: true,
+  uri: 'http://localhost:3001/graphql',
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div className="App">
       <header className="App-header">
         <Header/>
@@ -25,6 +31,7 @@ function App() {
 
 
     </div>
+    </ApolloProvider>
   );
 }
 
