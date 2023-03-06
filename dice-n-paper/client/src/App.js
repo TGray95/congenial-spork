@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import ActiveGroups from './Pages/ActiveGroups';
 import CreateGroup from './Pages/CreateGroup';
 import Profile from './Pages/Profile';
+import Login from './Pages/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const client = new ApolloClient({
@@ -27,6 +28,7 @@ function App() {
         <Route path='/active-groups' element={<ActiveGroups/>}/>
         <Route path='/create-group' element={<CreateGroup/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
 
 
