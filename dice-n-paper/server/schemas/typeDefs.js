@@ -1,12 +1,18 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  type Profile {
+    bio: String
+    games: [String]
+  }
+
   type User {
     _id: ID
     username: String
     email: String
     password: String
-    friends: [User]!
+    friends: [User]
+    profile: Profile
   }
 
   type Group {
@@ -29,6 +35,8 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     addFriend(userId: ID!, friendId: ID!): User
     removeFriend(userId: ID!, friendId: ID!): User
+    addProfileBio(userId: ID!, bioText: String!): User
+    addProfileGame(userId: ID!, game: String!): User
     addGroup(groupName: String!, game: String!, groupCreator: String!): Group
     removeGroup(groupId: ID!): Group
     addGroupMember(groupId: ID!, userId: ID!): Group

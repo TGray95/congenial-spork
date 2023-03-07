@@ -18,7 +18,6 @@ const groupSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
         maxlength: 300
     },
     members: [{

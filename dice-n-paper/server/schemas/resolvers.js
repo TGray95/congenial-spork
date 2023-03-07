@@ -3,10 +3,10 @@ const { User, Group } = require("../models");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("friends");
+      return User.find().populate("friends", "profile");
     },
     user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId }).populate("friends");
+      return User.findOne({ _id: userId }).populate("friends", "profile");
     },
     groups: async () => {
       return Group.find().populate("members");
@@ -44,6 +44,22 @@ const resolvers = {
           $pull: { friends: friendId },
         }
         );
+    },
+    addProfileBio: async (parent, {userId, bioText}) => {
+      return User.findOneAndUpdate(
+        {_id: userId},
+        {
+          $set: {"profile.bio": bioText}
+        }
+      )
+    },
+    addProfileGame: async (parent, {userId, game}) => {
+      return User.findOneAndUpdate(
+        {_id: userId},
+        {
+          $addToSet: {"profile.games": game}
+        }
+      )
     },
     addGroup: async (parent, { groupName, game, groupCreator, description }) => {
         const group = await Group.create({ groupName, game, groupCreator, description });
