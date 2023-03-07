@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import "../styles/Login.css";
 import { ADD_USER } from "../utils/mutations";
-
+​
 function Login() {
   const [state, setState] = useState(true);
   const [formState, setFormState] = useState({
@@ -13,7 +13,7 @@ function Login() {
   });
   //set up mutation for creating new user
   const [addUser, { error }] = useMutation(ADD_USER);
-
+​
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -25,13 +25,13 @@ function Login() {
       console.error(err);
     }
   };
-
+​
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log(event.target)
     setFormState({ ...formState, [name]: value });
   };
-
+​
   return (
     <div className="Login">
       <div className="title">
@@ -88,5 +88,5 @@ function Login() {
     </div>
   );
 }
-
+​
 export default Login;
