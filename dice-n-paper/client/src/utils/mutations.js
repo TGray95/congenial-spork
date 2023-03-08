@@ -45,8 +45,8 @@ export const ADD_GROUP = gql`
   }
 `;
 export const ADD_GROUP_MEMBER = gql`
-mutation addGroupMember($groupId: ID!, $userId: ID!) {
-  addGroupMember(groupId: $groupId, userId: $userId) {
+mutation addGroupMember($groupId: ID!) {
+  addGroupMember(groupId: $groupId) {
     _id
     groupName
   }

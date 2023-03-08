@@ -12,12 +12,14 @@ import { useParams } from 'react-router-dom';
         variables: { userId: userId },
       }
     );
+    console.log(data?.me)
 
   
   
     if (loading) {
       return <div>Loading profile...</div>
     }
+    //displays user's info if user is logged in and no params are found in url. if neither are true, returns an empty object
     const user = data?.me || data?.user || {};
   if (!Auth.loggedIn()) {
     return (
@@ -31,7 +33,7 @@ import { useParams } from 'react-router-dom';
         <h4>Location</h4>
         <h4>Games: {user.profile.games}</h4>
         <p>Bio: {user.profile.bio}</p>
-        <p>Friends: {user.friends}</p>
+        <p>Friends: {user.friends.map((friend) => friend.username + " ")}</p>
       </div>
     );
   }

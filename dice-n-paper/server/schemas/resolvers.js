@@ -88,11 +88,11 @@ const resolvers = {
         const group = await Group.create({ groupName, game, groupCreator, description });
         return { group };
       },
-    addGroupMember: async (parent, {groupId, userId}) => {
+    addGroupMember: async (parent, {groupId}, context) => {
       return Group.findOneAndUpdate(
         { _id: groupId },
         {
-          $addToSet: { members: userId },
+          $addToSet: { members: context.user._id },
         }
         );
     },

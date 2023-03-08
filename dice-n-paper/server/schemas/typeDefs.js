@@ -49,7 +49,7 @@ const typeDefs = gql`
 
     addGroup(groupName: String!, game: String!, groupCreator: String!): Group
     removeGroup(groupId: ID!): Group
-    addGroupMember(groupId: ID!, userId: ID!): Group
+    addGroupMember(groupId: ID!): Group
     removeGroupMember(groupId: ID!, userId: ID!): Group
   }
 `;
