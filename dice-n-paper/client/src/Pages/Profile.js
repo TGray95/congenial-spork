@@ -1,28 +1,26 @@
-import React, { createElement, getElementById } from 'react';
-import { useState } from 'react';
-// import Avatar from 'idk where yet';
-// import username from 'idk where yet';
-// import userGames from 'idk where yet';
-// import Location from 'idk where yet';
-// import userBio from 'idk where yet';
+import React from 'react';
+import { useQuery } from '@apollo/client'
+import { QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth'
+  
+  const Profile = () => {
+    const {loading, data} = useQuery(QUERY_ME,)
 
-const handleFormSubmit = (e) => {
-    //prevent page from refreshing
-    e.preventDefault();
-  
-    // code to direct page to update email or password
-  
-  };
-  
-  export default function Profile() {
+    const user = data?.me || {};
+    console.log(user);
+    console.log(Auth.loggedIn())
+    if (loading) {
+      return <div>Loading profile...</div>
+    }
     return (
       <div className="Profile">
         <img src="" alt="Profile Image" />
-        <h2>username</h2>
+        <h2>username: {user.username}</h2>
         <h4>Location</h4>
         <h4>Games: games</h4>
         <p>Bio: test bio</p>
-        <button type="button" onClick={handleFormSubmit}>Change Email/Password</button>
       </div>
     );
   }
+
+  export default Profile
