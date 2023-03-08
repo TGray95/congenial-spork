@@ -17,11 +17,11 @@ const handleFormSubmit = (e) => {
   export default function Profile() {
     return (
       <div className="Profile">
-        <img src={Avatar} alt="Profile Image" />
-        <h2>{username}</h2>
-        <h4>{Location}</h4>
-        <h4>Games: {userGames}</h4>
-        <p>Bio: {userBio}</p>
+        <img src="" alt="Profile Image" />
+        <h2>username</h2>
+        <h4>Location</h4>
+        <h4>Games: games</h4>
+        <p>Bio: test bio</p>
         <button type="button" onClick={handleFormSubmit}>Change Email/Password</button>
       </div>
     );

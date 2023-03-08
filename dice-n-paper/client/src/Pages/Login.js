@@ -1,35 +1,71 @@
-import React from "react"
+import React from "react";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import "../styles/Login.css";
 import { ADD_USER } from "../utils/mutations";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 function Login() {
   const [state, setState] = useState(true);
-  const [formState, setFormState] = useState({
+  const [loginFormState, setLoginFormState] = useState({
     username: "",
     email: "",
-    password: "",
+    password: ""
   });
+  const [signUpFormState, setSignUpFormState] = useState({
+    email: "",
+    password: ""
+  })
   //set up mutation for creating new user
-  const [addUser, { error }] = useMutation(ADD_USER);
-
-  const handleFormSubmit = async (event) => {
+  const [addUser] = useMutation(ADD_USER);
+  const [login, { error, data }] = useMutation(LOGIN);
+//function for handling user sign-up form
+  const handleSignupSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = addUser({
-        variables: { ...formState },
+      const { data } = await addUser({
+        variables: { ...signUpFormState },
       });
-      window.location.reload();
+      Auth.login(data.addUser.token)
+      // window.location.reload();
     } catch (err) {
       console.error(err);
     }
+    setSignUpFormState({
+      username: '',
+      email: '',
+      password: '',
+    });
+  };
+//function for handling user log-in form
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await login({
+        variables: { ...loginFormState },
+      });
+      Auth.login(data.login.token)
+      // window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+    setLoginFormState({
+      email: '',
+      password: '',
+    });
   };
 
-  const handleChange = (event) => {
+  const handleSignUpChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target)
-    setFormState({ ...formState, [name]: value });
+    console.log(event.target);
+    setSignUpFormState({ ...signUpFormState, [name]: value });
+  };
+
+  const handleLoginChange = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target);
+    setLoginFormState({ ...loginFormState, [name]: value });
   };
 
   return (
@@ -50,27 +86,27 @@ function Login() {
         </p>
       </div>
       {state ? (
-        <form className="" onSubmit={handleFormSubmit}>
+        <form className="" onSubmit={handleSignupSubmit}>
           <input
             type="text"
             name="username"
             placeholder="Username"
-            value={formState.username}
-            onChange={handleChange}
+            value={signUpFormState.username}
+            onChange={handleSignUpChange}
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
-            value={formState.email}
-            onChange={handleChange}
+            value={signUpFormState.email}
+            onChange={handleSignUpChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Password"
-            value={formState.password}
-            onChange={handleChange}
+            value={signUpFormState.password}
+            onChange={handleSignUpChange}
           />
           {/* <input type='password' placeholder='Confirm Password' /> */}
           <div>
@@ -80,9 +116,14 @@ function Login() {
           </div>
         </form>
       ) : (
-        <form className="body">
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+        <form className="body" onSubmit={handleLoginSubmit}>
+          <input type="email" name="email" value={loginFormState.email} onChange={handleLoginChange} placeholder="Email" />
+          <input type="password" name="password" value={loginFormState.password} onChange={handleLoginChange} placeholder="Password" />
+          <div>
+            <button className="btn btn-primary" type="submit">
+              Log In
+            </button>
+          </div>
         </form>
       )}
     </div>
