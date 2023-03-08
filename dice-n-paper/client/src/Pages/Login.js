@@ -67,26 +67,37 @@ function Login() {
     console.log(event.target);
     setLoginFormState({ ...loginFormState, [name]: value });
   };
-
+  const logOut = () => {
+    localStorage.removeItem('id_token');
+    window.location.reload();
+  }
+  if (Auth.loggedIn()) {
+    return (
+      <button onClick={logOut}>Log Out</button>
+    )
+  } else
+  
   return (
+    
     <div className="Login">
       <div className="title">
-        <p
+        <button
           className={`${state ? "black" : "red"}`}
           onClick={() => setState(false)}
         >
           Login
-        </p>
+        </button>
         &nbsp;/&nbsp;
-        <p
+        <button
           className={`${state ? "red" : "black"}`}
           onClick={() => setState(true)}
         >
           SignUp
-        </p>
+        </button>
       </div>
       {state ? (
         <form className="" onSubmit={handleSignupSubmit}>
+          <div>
           <input
             type="text"
             name="username"
@@ -94,6 +105,7 @@ function Login() {
             value={signUpFormState.username}
             onChange={handleSignUpChange}
           />
+          </div>
           <input
             type="email"
             name="email"
@@ -101,6 +113,7 @@ function Login() {
             value={signUpFormState.email}
             onChange={handleSignUpChange}
           />
+          <div>
           <input
             type="password"
             name="password"
@@ -108,6 +121,7 @@ function Login() {
             value={signUpFormState.password}
             onChange={handleSignUpChange}
           />
+          </div>
           {/* <input type='password' placeholder='Confirm Password' /> */}
           <div>
             <button className="btn btn-primary" type="submit">
@@ -117,8 +131,12 @@ function Login() {
         </form>
       ) : (
         <form className="body" onSubmit={handleLoginSubmit}>
+          <div>
           <input type="email" name="email" value={loginFormState.email} onChange={handleLoginChange} placeholder="Email" />
+          </div>
+          <div>
           <input type="password" name="password" value={loginFormState.password} onChange={handleLoginChange} placeholder="Password" />
+          </div>
           <div>
             <button className="btn btn-primary" type="submit">
               Log In
@@ -128,6 +146,7 @@ function Login() {
       )}
     </div>
   );
+  
 }
 
 export default Login;
