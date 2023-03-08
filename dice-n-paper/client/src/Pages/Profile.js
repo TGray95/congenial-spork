@@ -19,7 +19,11 @@ import { useParams } from 'react-router-dom';
       return <div>Loading profile...</div>
     }
     const user = data?.me || data?.user || {};
-  
+  if (!Auth.loggedIn()) {
+    return (
+      <div>Please log in to view profile</div>
+    )
+  }
     return (
       <div className="Profile">
         <img src="" alt="Profile Image" />
