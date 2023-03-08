@@ -7,7 +7,7 @@ function Navigation(){
             <li><Link to="/">Home</Link></li>
             <li><Link to="/active-groups">Active Groups</Link></li>
             <li><Link to="/create-group">Create New Group</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/me">Profile</Link></li>
         </div>
     )
 }

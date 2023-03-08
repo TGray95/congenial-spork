@@ -6,7 +6,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header";
 import Home from "./Pages/Home";
 import ActiveGroups from "./Pages/ActiveGroups";
@@ -47,7 +47,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/active-groups" element={<ActiveGroups />} />
           <Route path="/create-group" element={<CreateGroup />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/me" element={<Profile />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
