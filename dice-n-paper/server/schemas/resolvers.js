@@ -1,4 +1,6 @@
 const { User, Group } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require('../utils/auth')
 
 const resolvers = {
   Query: {
@@ -8,18 +10,26 @@ const resolvers = {
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId }).populate("friends", "profile");
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({_id: context.user._id}).populate("friends");
+      }
+      throw new AuthenticationError('Not logged in!')
+    },
     groups: async () => {
       return Group.find().populate("members");
     },
     group: async (parent, { groupId }) => {
-      return Group.findOne({ _id: groupId });
+      return Group.findOne({ _id: groupId }).populate("members");
     },
   },
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
-      return { user };
+      const token = signToken(user)
+
+      return { token, user };
     },
     removeUser: async (parent, { userId }) => {
         const user = await User.findOneAndDelete({
@@ -60,6 +70,19 @@ const resolvers = {
           $addToSet: {"profile.games": game}
         }
       )
+    },
+    login: async (parent, {email, password}) => {
+      const user = await User.findOne({email});
+      if (!user) {
+        throw new AuthenticationError("No account associated with this email");
+      }
+      const correctPass = await user.isCorrectPassword(password);
+      
+      if (!correctPass) {
+        throw new AuthenticationError("Incorrect Password");
+      }
+      const token = signToken(user);
+      return {token, user};
     },
     addGroup: async (parent, { groupName, game, groupCreator, description }) => {
         const group = await Group.create({ groupName, game, groupCreator, description });

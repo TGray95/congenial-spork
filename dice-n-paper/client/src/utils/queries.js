@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USERS = gql`
-query users {
+  query users {
     users {
       username
       profile {
@@ -15,13 +15,14 @@ query users {
       }
     }
   }
-`
+`;
 
 export const QUERY_USER = gql`
-query user($userId: ID!) {
+  query user($userId: ID!) {
     user(userId: $userId) {
       username
       friends {
+        _id
         username
       }
       profile {
@@ -30,27 +31,44 @@ query user($userId: ID!) {
       }
     }
   }
-`
-export const QUERY_GROUPS = gql`
-query groups {
-    groups {
-    groupName
-    game
-    groupCreator
-    _id
-    members {
+`;
+export const QUERY_ME = gql`
+  query me {
+    me {
       _id
       username
+      friends {
+        _id
+        username
+      }
+      profile {
+        bio
+        games
+      }
     }
-    }
-  }`
+  }
+`;
 
-  export const QUERY_GROUP = gql`
+export const QUERY_GROUPS = gql`
+  query groups {
+    groups {
+      groupName
+      game
+      groupCreator
+      _id
+      members {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_GROUP = gql`
   query Group($groupId: ID!) {
     group(groupId: $groupId) {
       _id
       groupName
-      
     }
   }
-`
+`;

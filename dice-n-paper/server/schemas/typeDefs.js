@@ -23,20 +23,30 @@ const typeDefs = gql`
     members: [User]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(userId: ID!): User
+    me: User
+
     groups: [Group]
     group(groupId: ID!): Group
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): User
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+
     removeUser(userId: ID!): User
     addFriend(userId: ID!, friendId: ID!): User
     removeFriend(userId: ID!, friendId: ID!): User
     addProfileBio(userId: ID!, bioText: String!): User
     addProfileGame(userId: ID!, game: String!): User
+
     addGroup(groupName: String!, game: String!, groupCreator: String!): Group
     removeGroup(groupId: ID!): Group
     addGroupMember(groupId: ID!, userId: ID!): Group
