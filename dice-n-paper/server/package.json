@@ -6,7 +6,9 @@
     "scripts": {
         "start": "node server.js",
         "seed": "node seeds/seed.js",
-        "watch": "nodemon"
+        "watch": "nodemon",
+        "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+
     },
     "author": "",
     "license": "MIT",
@@ -20,5 +22,8 @@
     },
     "devDependencies": {
         "nodemon": "^2.0.6"
+    },
+    "engines": {
+        "node": "16.18.0"
     }
 }
