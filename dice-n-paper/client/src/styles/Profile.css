@@ -1,0 +1,14 @@
+.Profile img {
+  max-width: 25vw;
+}
+
+.noProfile {
+  font-family: papyrus, Lucida Handwriting;
+  font-size: calc(15px + 3vmin);
+  padding: 60px 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color: white;
+}
+

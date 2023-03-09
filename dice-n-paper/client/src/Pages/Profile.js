@@ -1,8 +1,10 @@
 import React from 'react';
-import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../utils/queries';
-import Auth from '../utils/auth'
+import Auth from '../utils/auth';
 import { useParams } from 'react-router-dom';
+import profileImage from '../Images/Avatars/Avatar2.png';
+import "../styles/Profile.css"
   
   const Profile = () => {
     const {userId }= useParams()
@@ -23,17 +25,17 @@ import { useParams } from 'react-router-dom';
     const user = data?.me || data?.user || {};
   if (!Auth.loggedIn()) {
     return (
-      <div>Please log in to view profile</div>
+      <div className="noProfile">Please log in to view profile</div>
     )
   }
     return (
       <div className="Profile">
-        <img src="" alt="Profile Image" />
-        <h2>username: {user.username}</h2>
+        <img src={profileImage} alt="Profile Avatar" />
+        <h2>Welcome, {user.username}!</h2>
         <h4>Location</h4>
         <h4>Games: {user.profile.games}</h4>
-        <p>Bio: {user.profile.bio}</p>
-        <p>Friends: {user.friends.map((friend) => friend.username + " ")}</p>
+        <h4>Bio: {user.profile.bio}</h4>
+        <h4>Friends: {user.friends.map((friend) => friend.username + " ")}</h4>
       </div>
     );
   }

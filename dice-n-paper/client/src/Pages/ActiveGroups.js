@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_GROUPS, QUERY_ME } from "../utils/queries";
 import { ADD_GROUP_MEMBER } from "../utils/mutations";
-import Auth from "../utils/auth"
+import Auth from "../utils/auth";
+import groupArt from "../Images/diceandpaper_homepage_image.png";
+import '../styles/Groups.css';
+
 
 const ActiveGroups = () => {
   
@@ -30,39 +33,37 @@ const ActiveGroups = () => {
   };
 
   if (!groups.length) {
-    return <h3>No Groups Yet</h3>;
+    return <h3 className="noGroups">No Groups Yet</h3>;
   }
 
   return (
-    <div>
-      <h3>Groups</h3>
-      {groups &&
-        groups.map((group) => (
-          <div key={group._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {group.groupName} <br />
-              <span style={{ fontSize: "1rem" }}>
-                Group Creator: {group.groupCreator} -- Game: {group.game}
-              </span>
-            </h4>
-            <div className="card-body bg-light p-2">
-              <p>{group.description}</p>
+    <div className="groupPage">
+      <div className="groupCard">
+        <img src={groupArt} alt="Group Playing D&D"></img>
+        <h3>Check Out These Groups:</h3>
+        {groups &&
+          groups.map((group) => (
+            <div key={group._id} className="groups">
+              <h3> {group.groupName}</h3>
+              <h4>Game: {group.game}</h4>
+              <h4>Group Creator: {group.groupCreator}</h4>
+              <div className="groupInfo">
+                <p>{group.description}</p>
+                <p>
+                  Group Members:{" "}
+                  {group.members.map((member) => member.username + " ")}
+                </p>
+              </div>
+              {Auth.loggedIn &&
+              <div>
+                <button className="btn btn-light" value={group._id} onClick={handleButtonClick}>
+                  Join Group!
+                </button>
+              </div>
+              }
             </div>
-            <div className="card-body bg-light p-2">
-              <p>
-                Group Members:{" "}
-                {group.members.map((member) => member.username + " ")}
-              </p>
-            </div>
-            {Auth.loggedIn &&
-            <div>
-              <button value={group._id} onClick={handleButtonClick}>
-                Join Group!
-              </button>
-            </div>
-            }
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 };

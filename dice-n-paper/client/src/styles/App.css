@@ -1,29 +1,36 @@
 .App {
   text-align: center;
+  background-color: #4e1000;
+  /* background-image: linear-gradient(to bottom right, black , red); */
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
 /* Header and Navigation styles */
 .App-header {
   background-image: linear-gradient(to bottom right, red, yellow);
-  min-height: 10vh;
+  min-height: 18vh;
   display: flex;
-  align-items: center;
   flex-direction: row;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-around; 
+  font-size: calc(12px + 2vmin);
   color: white;
 }
 
-.header{
+.header {
   font-family: papyrus, Lucida Handwriting;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.header h1 {
+  font-weight: bold;
+  font-size: calc(15px + 5vmin);
+  margin-top: 15px;
 }
 
 .header img{
@@ -34,49 +41,25 @@
 .nav{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
 }
 
-.nav li{
+.nav li {
   list-style: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #8F0000;
+}
+
+.nav li a:hover {
+  color: white;
 }
 
 .loginBtn{
-  margin-left: 50px;
-  margin-right: 50px;
-  height: 60px;
-  width: 180px;
-}
-
-/* Create Group Styles */
-.createGroup{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.createGroup input,
-.createGroup select{
-  font-size: larger;
-  margin-bottom: 30px;
-}
-
-.createGroup button{
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 200px;
-  height: 60px;
-  width: 180px;
-}
-
-.createGroup img{
-  width: 300px;
-  height: 300px;
-  margin-bottom: 20px;
+  font-size: calc(10px + 2vmin);
 }
 
 @media (prefers-reduced-motion: no-preference) {
