@@ -1,5 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 .Profile img {
-  max-width: 25vw;
+  max-width: 30vw;
+  padding: 30px;
 }
 
 .noProfile {
@@ -12,3 +15,30 @@
   color: white;
 }
 
+.Profile {
+  font-family: Montserrat, sans-serif;
+  font-size: calc(15px + 3vmin);
+  color: white;
+}
+
+.Profile h2 {
+  font-family: papyrus, Lucida Handwriting;
+  font-size: calc(15px + 3vmin);
+  font-weight: bold;
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+
+.Profile h4 {
+  padding-bottom: 20px;
+  padding-left: 15px;
+  font-size: calc(15px + 2vmin);
+}
+
+/* .profileContent {
+  /* background-color: rgb(131, 197, 131); */
+  /* margin: 50px;
+  border: 5px currentColor;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+} */

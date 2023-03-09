@@ -22,6 +22,12 @@
   background-color: #4e1000;
 }
 
+.logoutBtn {
+  margin-top: 50px;
+  font-size: calc(10px + 2vmin);
+  font-family: Montserrat, sans-serif;
+}
+
 .title {
   margin-bottom: 20px;
 }

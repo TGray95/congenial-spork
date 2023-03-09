@@ -31,11 +31,13 @@ import "../styles/Profile.css"
     return (
       <div className="Profile">
         <img src={profileImage} alt="Profile Avatar" />
-        <h2>Welcome, {user.username}!</h2>
-        <h4>Location</h4>
-        <h4>Games: {user.profile.games}</h4>
-        <h4>Bio: {user.profile.bio}</h4>
-        <h4>Friends: {user.friends.map((friend) => friend.username + " ")}</h4>
+        <div className="profileContent">
+          <h2>Welcome, {user.username}!</h2>
+          <h4>Location: </h4>
+          <h4>Games: {user.profile.games}</h4>
+          <h4>Bio: {user.profile.bio}</h4>
+          <h4>Friends: {user.friends.map((friend) => friend.username + " ")}</h4>
+        </div>
       </div>
     );
   }

@@ -73,7 +73,7 @@ function Login() {
   }
   if (Auth.loggedIn()) {
     return (
-      <button onClick={logOut}>Log Out</button>
+      <button className="logoutBtn btn btn-light" onClick={logOut}>Log Out</button>
     )
   } else
   
