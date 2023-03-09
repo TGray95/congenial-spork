@@ -7,6 +7,7 @@
 .groupCard img {
   max-width: 55vw;
   margin: 20px;
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 

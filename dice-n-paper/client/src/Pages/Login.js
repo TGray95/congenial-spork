@@ -78,25 +78,26 @@ function Login() {
   } else
   
   return (
-    
     <div className="Login">
       <div className="title">
+      <h3>New Here?</h3>
+      <button 
+          className={`${state ? "red" : "black"}`}
+          onClick={() => setState(true)}
+        >
+          Get Started
+        </button>
+        {/* &nbsp;/&nbsp; */}
+        <h3>Already Have an Account?</h3>
         <button
-          className={`${state ? "black" : "red"}`}
+          className={`${state ? "black" : "red"}`} 
           onClick={() => setState(false)}
         >
           Login
         </button>
-        &nbsp;/&nbsp;
-        <button
-          className={`${state ? "red" : "black"}`}
-          onClick={() => setState(true)}
-        >
-          SignUp
-        </button>
       </div>
       {state ? (
-        <form className="" onSubmit={handleSignupSubmit}>
+        <form className="formFields" onSubmit={handleSignupSubmit}>
           <div>
           <input
             type="text"
@@ -124,13 +125,13 @@ function Login() {
           </div>
           {/* <input type='password' placeholder='Confirm Password' /> */}
           <div>
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-light" type="submit">
               Sign Up
             </button>
           </div>
         </form>
       ) : (
-        <form className="body" onSubmit={handleLoginSubmit}>
+        <form className="formFields" onSubmit={handleLoginSubmit}>
           <div>
           <input type="email" name="email" value={loginFormState.email} onChange={handleLoginChange} placeholder="Email" />
           </div>
@@ -138,7 +139,7 @@ function Login() {
           <input type="password" name="password" value={loginFormState.password} onChange={handleLoginChange} placeholder="Password" />
           </div>
           <div>
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-light" type="submit">
               Log In
             </button>
           </div>
