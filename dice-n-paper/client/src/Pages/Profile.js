@@ -25,7 +25,7 @@ import "../styles/Profile.css"
     const user = data?.me || data?.user || {};
   if (!Auth.loggedIn()) {
     return (
-      <div>Please log in to view profile</div>
+      <div className="noProfile">Please log in to view profile</div>
     )
   }
     return (

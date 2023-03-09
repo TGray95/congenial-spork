@@ -1,3 +1,32 @@
+.body {
+  background-color: #8F0000;
+}
+
 .groupCard img {
   max-width: 55vw;
 }
+
+.noGroups {
+  font-family: papyrus, Lucida Handwriting;
+  border-radius: 20px;
+  margin: 50px;
+  padding: 25px;
+  background-image: linear-gradient(to bottom right, yellow, red);
+  border: 5px currentColor;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.groupCard h3 {
+  font-family: papyrus, Lucida Handwriting;
+  font-size: calc(15px + 3vmin);
+  padding: 30px 20px 20px 20px;
+}
+
+/* .groupCard {
+  border-radius: 20px;
+  margin: 50px;
+  padding: 25px;
+  background-image: linear-gradient(to bottom right, yellow, red);
+  border: 5px currentColor;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+} */

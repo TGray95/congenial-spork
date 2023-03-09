@@ -6,15 +6,19 @@
 
 /* profile card */
 .homeProfile{
-    margin: 50px;
-    padding: 10px;
-    border: 5px solid black;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px;
     float: left;
+    background-image: linear-gradient(to bottom right, yellow, red);
+    border: 5px currentColor;
+    border-radius: 20px;
+    max-height: 70vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* main page except for profile side bar */
 .homeBody{
-    padding: 20px;
     margin: 50px;
     float: right;
     display: flex;
@@ -23,19 +27,23 @@
 
 /* Active groups div */
 .homeGroups{
-    border: 5px solid black;
+    border-radius: 20px;
     /* margin: 50px; */
-    padding: 20px;
+    padding: 25px;
+    background-image: linear-gradient(to bottom right, yellow, red);
+    border: 5px currentColor;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Events div */
 .homeEvents{
     font-family: papyrus, Lucida Handwriting;
     color: azure;
-    padding: 20px;
+    padding: 25px;
     margin: 50px;
-    background-image: linear-gradient(to bottom right, blue, purple);
-    border: 5px solid black;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom right, yellow, red);
+    border: 5px currentColor;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 20px;
 }

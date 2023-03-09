@@ -33,13 +33,13 @@ const ActiveGroups = () => {
   };
 
   if (!groups.length) {
-    return <h3>No Groups Yet</h3>;
+    return <h3 className="noGroups">No Groups Yet</h3>;
   }
 
   return (
     <div className="groupCard">
       <img src={groupArt} alt="Group Playing D&D"></img>
-      <h3>Groups</h3>
+      <h3>Check Out These Groups:</h3>
       {groups &&
         groups.map((group) => (
           <div key={group._id} className="card mb-3">
