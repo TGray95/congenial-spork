@@ -17,5 +17,8 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3"
-    }
+    },
+    "engines": {
+        "node": "16.18.0"
+      }
 }
