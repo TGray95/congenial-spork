@@ -15,8 +15,10 @@ import Profile from "./Pages/Profile";
 import Login from "./Pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+const uriString = process.env.URI_STRING || "http://localhost:3001/graphql";
+
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: uriString,
 });
 
 const authLink = setContext((_, { headers }) => {
