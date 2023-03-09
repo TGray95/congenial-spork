@@ -24,6 +24,7 @@
   font-family: papyrus, Lucida Handwriting;
   font-size: calc(15px + 3vmin);
   color: white;
+  font-weight: bold;
 }
 
 .groups {

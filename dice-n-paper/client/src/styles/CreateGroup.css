@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+.createGroup {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  background-image: linear-gradient(to bottom right, cyan, indigo);
+  max-width: 65vw;
+  border: 5px currentColor;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: white;
+  padding-top: 50px;
+  margin: 50px auto 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.createGroup button{
+  margin-bottom: 200px;
+  font-size: calc(10px + 2vmin);
+  margin-top: 20px;
+}
+
+.createGroup img {
+  border: 5px solid white;
+  margin-bottom: 50px;
+  height: 20vw;
+}
+
+.createGroup h3 {
+  font-family: papyrus, Lucida Handwriting;
+  font-size: calc(15px + 2vmin);
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.createGroup input, select {
+  margin-bottom: 20px;
+  padding: 0px 20px 0px 20px;
+}
+
+.createGroup select {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

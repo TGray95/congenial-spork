@@ -56,7 +56,7 @@ const ActiveGroups = () => {
               </div>
               {Auth.loggedIn &&
               <div>
-                <button className="btn btn-light"value={group._id} onClick={handleButtonClick}>
+                <button className="btn btn-light" value={group._id} onClick={handleButtonClick}>
                   Join Group!
                 </button>
               </div>

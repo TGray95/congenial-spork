@@ -80,6 +80,7 @@ function CreateGroup() {
 
   return (
     <div className="createGroup">
+      <h3>Create A New Group Here:</h3>
       {/* Image asigned to quickly identify groups by game */}
       <img src={changeLogo()} />
       {/* Input for group name (visible in group search) */}
@@ -94,7 +95,7 @@ function CreateGroup() {
         type="text"
         onChange={(e) => setGroupCreator(e.target.value)}
         name="group author"
-        placeholder="Your name here"
+        placeholder="Your Name here"
       />
 
       {/* Input for number of players */}
@@ -105,7 +106,7 @@ function CreateGroup() {
         placeholder=" Number of Players"
       />
       {/* Input to selct game type */}
-      <p>Game</p>
+      <p>Game:</p>
       <select value={game} onChange={(e) => setGame(e.target.value)}>
         <option>--Select one--</option>
         <option>Dungeons & Dragons</option>
@@ -119,7 +120,7 @@ function CreateGroup() {
       {OtherGame()}
 
       {/* Input to select if the group meets in person or online */}
-      <p>Meeting Type</p>
+      <p>Meeting Type:</p>
       <select value={inPerson} onChange={(e) => setInPerson(e.target.value)}>
         <option>--Select one--</option>
         <option>Meet in Person</option>
@@ -131,7 +132,7 @@ function CreateGroup() {
       {OtherPlatform()}
 
       {/* Creates groups and addes it to the database */}
-      <button onClick={handleFormSubmit}>Create Group</button>
+      <button className="btn btn-light" onClick={handleFormSubmit}>Create Group</button>
     </div>
   );
 }
