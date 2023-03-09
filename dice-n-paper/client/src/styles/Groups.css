@@ -1,9 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 .body {
   background-color: #8F0000;
 }
 
 .groupCard img {
   max-width: 55vw;
+  margin: 20px;
+  padding-bottom: 30px;
 }
 
 .noGroups {
@@ -19,14 +23,21 @@
 .groupCard h3 {
   font-family: papyrus, Lucida Handwriting;
   font-size: calc(15px + 3vmin);
-  padding: 30px 20px 20px 20px;
+  color: white;
 }
 
-/* .groupCard {
-  border-radius: 20px;
+.groups {
+  font-family: Montserrat, sans-serif;
+  background-image: linear-gradient(to bottom right, cyan, indigo);
   margin: 50px;
-  padding: 25px;
-  background-image: linear-gradient(to bottom right, yellow, red);
   border: 5px currentColor;
+  border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-} */
+  color: white;
+  padding: 20px;
+}
+
+.groups h4 {
+  font-size: calc(10px + 2vmin);
+  padding-bottom: 10px;
+}

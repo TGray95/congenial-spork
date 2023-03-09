@@ -27,12 +27,11 @@
 
 /* Active groups div */
 .homeGroups{
-    border-radius: 20px;
-    /* margin: 50px; */
-    padding: 25px;
-    background-image: linear-gradient(to bottom right, yellow, red);
-    border: 5px currentColor;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  background-image: linear-gradient(to bottom right, yellow, red);
+  border: 5px currentColor;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Events div */

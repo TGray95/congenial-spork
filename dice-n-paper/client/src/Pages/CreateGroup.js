@@ -7,6 +7,7 @@ import beybladeLogo from "../Images/beyblade-logo.png";
 import catanLogo from "../Images/catan-logo.png";
 import dndLogo from "../Images/dnd-logo.png";
 import magicLogo from "../Images/magic-logo.png";
+import "../styles/CreateGroup.css"
 
 function CreateGroup() {
   const [players, setPlayers] = useState("");
