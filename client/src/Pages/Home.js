@@ -16,13 +16,13 @@ import ActiveGroups from './ActiveGroups';
 function Home(){
 
     return(
-        <div className='home'>
+        <div className='home row'>
             {/* Home page profile sidebar */}
-            <div className='homeProfile'>
+            <div className='homeProfile col-2'>
                 <Profile/>
             </div>
 
-            <div className='homeBody'>
+            <div className='homeBody col'>
                 {/* Home page active groups div */}
                 <div className='homeGroups'>
                     <ActiveGroups/>

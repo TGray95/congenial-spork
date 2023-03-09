@@ -20,6 +20,7 @@ const typeDefs = gql`
     groupName: String
     groupCreator: String
     game: String
+    description: String
     members: [User]
   }
 
@@ -47,7 +48,7 @@ const typeDefs = gql`
     addProfileBio(userId: ID!, bioText: String!): User
     addProfileGame(userId: ID!, game: String!): User
 
-    addGroup(groupName: String!, game: String!, groupCreator: String!): Group
+    addGroup(groupName: String!, game: String!, groupCreator: String!, description: String!): Group
     removeGroup(groupId: ID!): Group
     addGroupMember(groupId: ID!): Group
     removeGroupMember(groupId: ID!, userId: ID!): Group

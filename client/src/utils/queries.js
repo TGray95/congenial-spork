@@ -55,6 +55,7 @@ export const QUERY_GROUPS = gql`
       groupName
       game
       groupCreator
+      description
       _id
       members {
         _id

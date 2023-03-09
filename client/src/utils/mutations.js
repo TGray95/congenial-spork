@@ -37,17 +37,33 @@ export const ADD_GROUP = gql`
     $groupName: String!
     $game: String!
     $groupCreator: String!
+    $description: String!
   ) {
-    addGroup(groupName: $groupName, game: $game, groupCreator: $groupCreator) {
+    addGroup(
+      groupName: $groupName
+      game: $game
+      groupCreator: $groupCreator
+      description: $description
+    ) {
       _id
       groupName
     }
   }
 `;
-export const ADD_GROUP_MEMBER = gql`
-mutation addGroupMember($groupId: ID!) {
-  addGroupMember(groupId: $groupId) {
+
+export const REMOVE_GROUP = gql`
+mutation removeGroup($groupId: ID!) {
+  removeGroup(groupId: $groupId) {
     _id
     groupName
   }
-}`
+}`;
+
+export const ADD_GROUP_MEMBER = gql`
+  mutation addGroupMember($groupId: ID!) {
+    addGroupMember(groupId: $groupId) {
+      _id
+      groupName
+    }
+  }
+`;

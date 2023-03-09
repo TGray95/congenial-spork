@@ -25,6 +25,7 @@ const resolvers = {
   },
 
   Mutation: {
+    //User mutations
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user)
@@ -84,10 +85,19 @@ const resolvers = {
       const token = signToken(user);
       return {token, user};
     },
+    //Group mutations
     addGroup: async (parent, { groupName, game, groupCreator, description }) => {
         const group = await Group.create({ groupName, game, groupCreator, description });
         return { group };
       },
+      removeGroup: async (parent, { groupId }) => {
+        const group = await Group.findOneAndDelete({
+          _id: groupId,
+        });
+
+        return { group };
+      
+    },
     addGroupMember: async (parent, {groupId}, context) => {
       return Group.findOneAndUpdate(
         { _id: groupId },

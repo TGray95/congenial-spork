@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 const httpLink = createHttpLink({
+  //If running locally, change the uri to "http://localhost:3001/graphql". For production, use "/graphql"
   uri: "/graphql",
 });
 
