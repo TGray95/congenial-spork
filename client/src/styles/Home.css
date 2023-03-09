@@ -1,0 +1,41 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* profile card */
+.homeProfile{
+    margin: 50px;
+    padding: 10px;
+    border: 5px solid black;
+    float: left;
+}
+
+/* main page except for profile side bar */
+.homeBody{
+    padding: 20px;
+    margin: 50px;
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Active groups div */
+.homeGroups{
+    border: 5px solid black;
+    margin: 50px;
+    padding: 20px;
+}
+
+/* Events div */
+.homeEvents{
+    font-family: papyrus, Lucida Handwriting;
+    color: azure;
+    padding: 20px;
+    margin: 50px;
+    background-image: linear-gradient(to bottom right, blue, purple);
+    border: 5px solid black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
