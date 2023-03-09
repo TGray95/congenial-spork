@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_GROUPS, QUERY_ME } from "../utils/queries";
 import { ADD_GROUP_MEMBER } from "../utils/mutations";
-import Auth from "../utils/auth"
+import Auth from "../utils/auth";
+import groupArt from "../Images/diceandpaper_homepage_image.png";
+import '../styles/Groups.css';
+
 
 const ActiveGroups = () => {
   
@@ -34,7 +37,8 @@ const ActiveGroups = () => {
   }
 
   return (
-    <div>
+    <div className="groupCard">
+      <img src={groupArt} alt="Group Playing D&D"></img>
       <h3>Groups</h3>
       {groups &&
         groups.map((group) => (
