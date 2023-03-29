@@ -16,6 +16,7 @@ function CreateGroup() {
   const [inPerson, setInPerson] = useState("");
   const [groupName, setGroupName] = useState("");
   const [groupCreator, setGroupCreator] = useState("");
+  const [description, setDescription] = useState("");
 
   const [addGroup, { error }] = useMutation(ADD_GROUP);
 
@@ -29,10 +30,11 @@ function CreateGroup() {
           game: game,
           groupName: groupName,
           groupCreator: groupCreator,
+          description: description
         },
       });
-      console.log(game, groupName, groupCreator);
-        window.location.reload();
+      console.log(game, groupName, groupCreator, description);
+        // window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -100,10 +102,10 @@ function CreateGroup() {
 
       {/* Input for number of players */}
       <input
-        type="number"
-        value={players}
-        onChange={(e) => setPlayers(e.target.value)}
-        placeholder=" Number of Players"
+        type="text"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Group description"
       />
       {/* Input to selct game type */}
       <p>Game:</p>

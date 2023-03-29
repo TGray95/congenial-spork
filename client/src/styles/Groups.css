@@ -43,3 +43,13 @@
   font-size: calc(10px + 2vmin);
   padding-bottom: 10px;
 }
+
+#deleteButton {
+  margin-top: 10px;
+  text-decoration: underline;
+  color: rgb(201, 198, 198);
+}
+
+#deleteButton:hover {
+  color: red;
+}
