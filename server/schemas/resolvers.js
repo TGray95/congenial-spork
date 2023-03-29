@@ -88,6 +88,14 @@ const resolvers = {
         const group = await Group.create({ groupName, game, groupCreator, description });
         return { group };
       },
+      removeGroup: async (parent, { groupId }) => {
+        const group = await Group.findOneAndDelete({
+          _id: groupId,
+        });
+
+        return { group };
+      
+    },
     addGroupMember: async (parent, {groupId}, context) => {
       return Group.findOneAndUpdate(
         { _id: groupId },
